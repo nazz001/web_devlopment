@@ -17,32 +17,55 @@ app.use((req,res,next)=>
 })
 
 const port=3000
-app.get('/',(req,res)=>{
-    res.json({message:"welcome to the devlopment"})
-})
-
-app.get("/home",(req,res)=>{
-    res.status(200).send("good boy and bad boy")
-})
-
-// If because of some reason some middle where terminat that request next
-// middle where not be called because that cycle will already been finshed
-
-const post_tours=(req,res)=>
-{
-    console.log(req.params)
-    id=Number(req.params.id)
-    console.log(id)
-    console.log(req.requestTime)
-    if(id==5)
-        res.status(404).json({status:"404 not found",tours:"fails"})
-    else
-        res.status(200).json({status:"success",data:5})
 
 
 
-}
-app.post("/home/:id?", post_tours)
+
+const getAlluser = (req, res) => {
+  res.status(500).json({
+    status: 'server error',
+    data: { message: 'route is not yet defined' }
+  });
+};
+const createUser = (req, res) => {
+  res.status(500).json({
+    status: 'server error',
+    data: { message: 'route is not yet defined' }
+  });
+};
+const deleteUser = (req, res) => {
+  res.status(500).json({
+    status: 'server error',
+    data: { message: 'route is not yet defined' }
+  });
+};
+const getUser = (req, res) => {
+  res.status(500).json({
+    status: 'server error',
+    data: { message: 'route is not yet defined' }
+  });
+};
+const updateUser = (req, res) => {
+  res.status(500).json({
+    status: 'server error',
+    data: { message: 'route is not yet defined' }
+  });
+};
+app
+  .route('/api/v1/users')
+  .get(getAlluser)
+  .post(createUser)
+  .delete(deleteUser);
+app
+  .route('/api/v1/users/:id')
+  .get(getUser)
+  .patch(updateUser);
+
+
+
+
+
+
 
 app.listen(port,()=>{
     console.log("server is running")
