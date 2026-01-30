@@ -10,8 +10,8 @@ app.get('/',(req,res)=>{
 app.get("/home",(req,res)=>{
     res.status(200).send("good boy and bad boy")
 })
-// // Lec 54 creating parameter
-app.post("/home/:id?",(req,res)=>
+
+const post_tours=(req,res)=>
 {
     console.log(req.params)
     id=Number(req.params.id)
@@ -21,8 +21,10 @@ app.post("/home/:id?",(req,res)=>
     else
         res.status(200).json({status:"success",data:5})
 
-    // res.status(302).send("good bod and bad boy")
-})
+
+
+}
+app.post("/home/:id?", post_tours)
 
 app.listen(port,()=>{
     console.log("server is running")
