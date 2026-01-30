@@ -51,13 +51,20 @@ const updateUser = (req, res) => {
     data: { message: 'route is not yet defined' }
   });
 };
-app
-  .route('/api/v1/users')
+
+const tourRouter=express.Router()
+app.use("/api/v1/users",tourRouter)
+
+
+
+
+tourRouter
+  .route('/')
   .get(getAlluser)
   .post(createUser)
   .delete(deleteUser);
-app
-  .route('/api/v1/users/:id')
+tourRouter
+  .route('/:id')
   .get(getUser)
   .patch(updateUser);
 
